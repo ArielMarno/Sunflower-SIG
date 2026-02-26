@@ -213,11 +213,11 @@ input::placeholder{
   align-items: center;
   justify-content: center;
   background: var(--white);
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   border-radius: 5px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   text-align: center;
-  width: 400px;
+  width: 450px;
   height: 600px;
 }
 
@@ -295,6 +295,21 @@ input::placeholder{
   font-size: 1rem;
 }
 
+.copy{
+  font-family: var(--text);
+  font-size: 0.7rem;
+  color: #818181;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.copy span{
+  color: #757474;
+  font-family: var(--title);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /*BOTON PARA SALIR DEL SISTEMA*/
 .sidebar {
   display: flex;
@@ -315,6 +330,20 @@ input::placeholder{
 
 .logout-sidebar-btn:hover {
   background-color: var(--red-hover)!important;
+}
+
+.copy-navbar{
+  font-family: var(--text);
+  font-size: 0.7rem;
+  color: var(--grey);
+  padding-top: 1rem;
+}
+
+.copy-navbar span{
+  font-family: var(--title);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
 }
 
 

@@ -55,6 +55,7 @@ const Login = ({ onLoginSuccess }) => {
         <div className='password-container'>
           {error && <p className="login-error">Credenciales incorrectas.</p>}
         </div>
+        <p className="copy"><span>Sunflower Agencia</span> © {new Date().getFullYear()}. Todos los derechos reservados.</p>
       </form>
     </div>
   );
@@ -107,6 +108,8 @@ function App() {
         <button className="logout-sidebar-btn" onClick={() => setAuth({ isAuthenticated: false, role: null })}>
           <img src={exit} alt="exit" className="btn-icon" /> Cerrar sesión
         </button>
+        <p className="copy-navbar"><span>Sunflower Agencia</span> © {new Date().getFullYear()}.<br/>
+        Todos los derechos reservados.</p>
       </nav>
 
       <main className="content">
