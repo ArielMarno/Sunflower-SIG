@@ -1,0 +1,182 @@
+.user-management{
+  width: 100%;
+  min-height: 85vh;
+  padding: 2rem;
+  border-radius: 5px;
+  background: var(--white);
+  border: 1px solid var(--grey);
+}
+
+/*TITULO*/
+.management-header{
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.management-header h2{
+  font-family: var(--title);
+  font-size: 2.7rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/*REGISTRO DE USUARIO Y CONTRASEÑA*/
+.register-user{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    background: var(--white);
+    border-radius: 5px;
+}
+
+.register-user input, .register-user select{
+    width: 220px;
+    padding: 0.5rem 0.7rem;
+    border-radius: 5px;
+    border: 1px solid var(--grey);
+    font-family: var(--text);
+    font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+    text-align: center;
+}
+
+.register-user::placeholder, .register-user input::placeholder{
+    font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+}
+
+/*BOTÓN DE REGISTRO*/
+.register-btn{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-family: var(--title);
+  font-weight: 600;
+  background: var(--green);
+  border: none;
+  border-radius: 5px;
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  cursor: pointer;
+  color: var(--white);
+}
+
+.register-btn img{
+  width: 20px;
+  height: auto;
+}
+
+.register-btn:hover{
+  background-color: var(--green-hover);
+}
+
+/*PANEL*/
+.data-container{
+  width: 100%;
+  min-height: 40vh;
+  overflow: auto;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+/*TABLA DE USUARIOS*/
+.data-table{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/*CABECERA*/
+.data-table thead{
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+
+}
+
+/*COLUMNAS*/
+.data-table th{
+  width: 100%;
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  font-weight: 600;
+  text-align: left;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dark);
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+}
+
+/*FILAS*/
+.data-table td{
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  text-align: left;
+  border-bottom: 1px solid var(--grey);
+  padding: 1rem;
+}
+
+.delete-register{
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background: var(--red);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.delete-register img{
+  width: 20px;
+  height: auto;
+}
+
+.delete-register:hover{
+  background-color: var(--red-hover);
+}
+
+.state-msg{
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.msg{
+  font-family: var(--text);
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  width: fit-content;
+  font-weight: 600;
+  text-align: center;
+}
+
+/*RESPONSIVE*/
+@media(max-width: 1440px){
+
+  .user-management{
+    padding: 1rem;
+  }
+}

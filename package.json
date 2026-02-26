@@ -1,0 +1,64 @@
+{
+  "name": "sunflower-sig",
+  "version": "1.0.0",
+  "description": "Sunflower-SIG",
+  "author": "Sunflower Agencia",
+  "main": "public/electron.js",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "electron-store": "^11.0.2",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "5.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^40.4.1",
+    "electron-builder": "^26.7.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
+    "dist": "npm run build && electron-builder build --win"
+  },
+  "build": {
+    "appId": "com.sunflower.pos",
+    "productName": "Sistema Integral de Gestión",
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Sunflower-SG"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

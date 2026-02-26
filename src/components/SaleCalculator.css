@@ -1,0 +1,433 @@
+.sales-mode {
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+  height: 100%;
+  padding: 3rem 2rem;
+  gap: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+}
+
+/*TITULO & INPUT PARA INGRESAR PRODUCTOS(SCANNER)*/
+.checkout-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-height: 80px;
+}
+
+.checkout-header .title{
+  min-height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/*TITULO*/
+.checkout-header .title h2 {
+  font-family: var(--title);
+  font-size: 2.7rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/*SCANNER*/
+.cod-bar_inp {
+  min-height: 80px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 250px;
+  margin-top: 15px;
+}
+
+.cod-bar_inp input{
+  width: 100%;
+  padding: 0.5rem;
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  border-radius: 5px;
+  border: 2px solid var(--green);
+  background: #eafaf1;
+}
+
+.cod-bar_inp input::placeholder{
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+}
+
+/*ERROR CODIGO DE BARRAS*/
+.cod-bar_inp .input-error{
+  color: var(--red);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  font-weight: 500;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+/*CONTENEDOR DE TABLA CON PRODUCTOS INGRESADOS*/
+.sales-container {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.ticket-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.ticket-area {
+  flex: 2;
+  background: var(--bg);
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  padding: 1rem 0;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/*CABECERA*/
+.ticket-table th {
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--dark);
+  width: 100%;
+}
+
+/*PRIMER FILA - INGRESO MANUAL DE PRODUCTOS*/
+.manual-input-row{
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  margin: 0 0.5rem;
+}
+
+.manual-input-row input, .manual-input-row .unit select{
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  text-align: center;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  padding: 0.5rem 0.1rem;
+}
+
+.manual-input-row .unit select{
+  padding: 0.45rem 0.1rem;
+}
+
+.manual-input-row .unit{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.manual-subtotal{
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  text-align: center;
+}
+
+/*BOTON PARA INGRESO MANUAL*/
+.add-btn-manual{
+  width: 120px;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-family: var(--title);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+}
+
+.plus{
+  width: 20px;
+  height: auto;
+}
+
+.add-btn-manual:hover{
+  background: var(--blue-hover);
+}
+
+/*FILAS*/
+.ticket-table td {
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--grey);
+}
+
+.ticket-table th:last-child,
+.ticket-table td:last-child {
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+/*ELIMINAR ITEM DE LA LISTA*/
+.remove-item-btn {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background: var(--red);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.remove-item-btn img{
+  width: 20px;
+  height: auto;
+}
+
+.remove-item-btn:hover{
+  background-color: var(--red-hover);
+}
+
+/*ELIMINAR TODA LA LISTA*/
+.clear-sale-btn {
+  width: 120px;
+  align-self: flex-end;
+  margin: 0 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--title);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--orange);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-sale-btn img{
+  width: 20px;
+  height: auto;
+}
+
+.clear-sale-btn:hover{
+  background-color: #ff8800;
+}
+
+/*PANEL DE PAGO*/
+.payment-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 250px;
+  min-width: 250px;
+}
+
+/*TOTAL A COBRAR*/
+.total-box {
+  background: var(--blue);
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.total-box .total {
+  font-family: var(--title);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/*MONTO*/
+.total-amount {
+  font-family: var(--text);
+  font-size: clamp(2rem, 1.1667rem + 1.1111vw, 2.5rem);
+  font-weight: 600;
+  color: var(--sun);
+}
+
+.total-amount .money-sign{
+  font-weight: 500;
+}
+
+/*METODO DE PAGO Y VUELTO*/
+.payment-input label{
+  display: block;
+  color: var(--dark);
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/*METODOS DE PAGO*/
+.payment-input select{
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: var(--dark);
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  cursor: pointer;
+}
+
+/*MONTO CON EL QUE ABONA EL CLIENTE*/
+.payment-input input {
+  font-family: var(--text);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--grey);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+}
+
+/*VUELTO*/
+.change-box {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.change-box .cash-back{
+  font-family: var(--title);
+  font-weight: 600;
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+}
+
+.change-amount{
+  width: 100%;
+  padding: 0.7rem;
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  color: var(--dark);
+  background-color: #fff;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+}
+
+.sell-success {
+  width: 100%;
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.7333rem + 0.2222vw, 1rem);
+  text-align: center;
+}
+
+/*PANEL LATERAL*/
+.payment-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/*BTN DE FINALIZACION DE COBRO*/
+.finish-sale-btn {
+  display: flex;
+  flex-direction: row;
+  align-items:  flex-end;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  padding-bottom: 1rem;
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.5rem + 0.6667vw, 1.2rem);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.finish-sale-btn img{
+  width: 30px;
+  height: auto;
+}
+
+.finish-sale-btn:hover {
+  background: var(--green-hover);
+}
+
+/*MENSAJE DE COBRO EXITOSO*/
+.sell-success{
+  width: 100%;
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.7333rem + 0.2222vw, 1rem);
+  text-align: center;
+}
+
+/*RESPONSIVE*/
+@media(max-width: 1400px){
+  
+
+  .sales-mode {
+    padding: 2rem 1rem;
+  }
+
+  .checkout-header .title{
+    margin-top: 0.7rem;
+  }
+
+  .checkout-header .title h2 {
+    font-size: 1.8rem;
+  }
+
+  .cod-bar_inp, .payment-panel  {
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+    overflow: hidden;
+  }
+
+  .add-btn-manual, .clear-sale-btn {
+    width: 100px;
+  } 
+
+  .finish-sale-btn {
+    padding: 1rem 0.6rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .finish-sale-btn img{
+    width: 22px;
+    height: auto;
+  }
+    
+}

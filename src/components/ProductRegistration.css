@@ -1,0 +1,122 @@
+.product-registration {
+  min-height: 85vh;
+  padding: 3rem 2rem;
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+/*TITULO*/
+.product-registration h2{
+  font-family: var(--title);
+  font-size: 2.7rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 2rem;
+}
+
+/*RECUADROS DE TEXTOS*/
+.input-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+
+.input-group label{
+  color: var(--dark);
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+}
+
+.input-group input{
+  color: var(--dark);
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--grey);
+}
+
+.input-group input::placeholder{
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+}
+
+/*MENSAJE DE ERROR AL GUARDAR*/
+.error-msg{
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  min-height: 25px;
+}
+
+/*CONTENEDOR DE BOTONES*/
+.btn-container{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+/*BTN LIMPIAR & GUARDAR*/
+.add-btn, .clear-btn{
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-family: var(--title);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.add-btn img, .clear-btn img{
+  width: 20px;
+  height: auto;
+}
+
+.add-btn{
+  background: var(--green);
+}
+
+.add-btn:hover{
+  background: var(--green-hover);
+}
+
+.clear-btn{
+  background: var(--orange);
+}
+
+.clear-btn:hover{
+  background: var(--orange-hover);
+}
+
+
+/*RESPONSIVE*/
+@media(max-width: 1440px){
+
+  .product-registration {
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+
+  .product-registration h2{
+    margin-bottom: 1rem;
+  }
+}

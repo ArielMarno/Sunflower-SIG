@@ -1,0 +1,286 @@
+.reports{
+  min-height: 85vh;
+  padding: 2rem;
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+}
+
+/*TITULO Y BTN DE DESCARGA*/
+.reports-header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.reports-header h2{
+  font-family: var(--title);
+  font-size: 2.7rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/*BTN DESCARGA GENERAL*/
+.btn-excel-all{
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-family: var(--title);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  font-weight: 600;
+  color: var(--white);
+  background: var(--green);
+  cursor: pointer;
+}
+
+.btn-excel-all img{
+  width: 20px;
+  height: auto;
+}
+
+.btn-excel-all:hover{
+  background: var(--green-hover);
+}
+
+/*AGRUPACION DE VENTAS*/
+.sales-list{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  height: 65vh;
+  overflow: auto;
+}
+
+.sales-list h3{
+  color: var(--dark);
+  font-family: var(--title);
+  font-size: clamp(1.2rem, 0.8667rem + 0.4444vw, 1.4rem);
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid var(--dark);
+  padding: 1rem;
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+}
+
+.sales-list p{
+  color: var(--red);
+  font-family: var(--title);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+}
+
+/*VENTA POR DÍA*/
+.day-group-container{
+  min-height: fit-content;
+  width: 100%;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.day-row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.6667rem + 0.4444vw, 1.2rem);
+  border: 1px solid var(--grey);
+  padding: 1rem;
+}
+
+/*INFORMACION*/
+.date-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+} 
+
+/*FLECHAS PARA INTERACCION DE DESPLIEGUE*/
+.arrow{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.icon-flecha{
+  width: 20px;
+  height: auto;
+}
+
+.date{
+  font-family: var(--title);
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.day-total-label{
+  font-family: var(--title);
+  font-weight: 500;
+}
+
+/*BOTONES PARA DESCARGA Y BORRAR DÍA*/
+.day-actions{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/*CONFIRMAR BORRAR*/
+.inline-confirm{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.inline-confirm button{
+  color: var(--white);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 40px;
+}
+
+.btn-confirm-yes{
+  background: var(--green);
+}
+
+.btn-confirm-yes:hover{
+  background-color: var(--green-hover);
+}
+
+.btn-confirm-no{
+  background: var(--red);
+}
+
+.btn-confirm-no:hover{
+  background-color: var(--red-hover);
+}
+
+/*DESCARGAR PDF*/
+.btn-pdf{
+  width: 80px;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  background: var(--blue);
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.7333rem + 0.2222vw, 1rem);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-pdf img{
+  width: 20px;
+  height: auto;
+}
+
+.btn-pdf:hover{
+  background: var(--blue-hover);
+}
+
+/*BTN ELIMINAR*/
+.btn-delete{
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background: var(--red);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-delete img{
+  width: 20px;
+  height: auto;
+}
+
+.btn-delete:hover{
+  background-color: var(--red-hover);
+}
+
+/*TABLA DESPLEGABLE CON DETALLES DE LAS VENTAS*/
+.day-preview-details{
+  height: fit-content;
+  width: 100%;
+  padding: 1rem ;
+  border: 1px solid var(--grey);
+}
+
+.preview-table{
+  width: 100%;
+  text-align: left;
+}
+
+.preview-table th{
+  text-align: left;
+  font-family: var(--title);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  color: var(--dark);
+  width: 100px;
+}
+
+.preview-table td{
+  font-family: var(--text);
+  font-size: clamp(0.9rem, 0.5667rem + 0.4444vw, 1.1rem);
+  padding: 1rem 0rem;
+  text-align: left;
+  border-top: 1px solid var(--grey);
+}
+
+
+/*RESPONSIVE*/
+@media(max-width: 1440px){
+
+  .reports{
+    padding: 1rem;
+  }
+}
