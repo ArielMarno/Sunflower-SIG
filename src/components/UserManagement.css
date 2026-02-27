@@ -130,6 +130,43 @@
   padding: 1rem;
 }
 
+.inline-confirm{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.inline-confirm button{
+  color: var(--white);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 40px;
+}
+
+.btn-confirm-yes{
+  background: var(--green);
+}
+
+.btn-confirm-yes:hover{
+  background-color: var(--green-hover);
+}
+
+.btn-confirm-no{
+  background: var(--red);
+}
+
+.btn-confirm-no:hover{
+  background-color: var(--red-hover);
+}
+
 .delete-register{
   justify-self: flex-end;
   display: flex;

@@ -115,7 +115,7 @@ function App() {
       <main className="content">
         {activeTab === 'sales' && <SaleCalculator />}
         {activeTab === 'inventory' && <InventoryTracking role={auth.role} />}
-        {activeTab === 'reports' && <Reports />}
+        {activeTab === 'reports' && <Reports role={auth.role}/>}
         {activeTab === 'register' && isAdmin && <ProductRegistration />}
         {activeTab === 'users' && isAdmin && <UserManagement />}
       </main>

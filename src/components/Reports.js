@@ -18,6 +18,7 @@ const Reports = ({ role }) => {
   const [confirmDeleteDate, setConfirmDeleteDate] = useState(null);
   const [expandedDate, setExpandedDate] = useState(null);
 
+  // Verificamos si es administrador
   const isAdmin = role === 'ADMIN';
 
   useEffect(() => {
@@ -46,12 +47,9 @@ const Reports = ({ role }) => {
 
   const exportDayPDF = (date, daySales) => {
     const doc = new jsPDF();
-    
     doc.setFontSize(16);
     doc.text(`Reporte de Ventas - Fecha: ${date}`, 14, 15);
-    
     const totalDelDia = daySales.reduce((acc, s) => acc + s.total, 0);
-
     const tableData = daySales.map(s => [
       s.date.split(',')[1],
       s.products.map(p => `${p.name} (x${p.qty}${p.measure || ''})`).join('\n'),
@@ -73,7 +71,7 @@ const Reports = ({ role }) => {
   };
 
   const deleteDaySales = (date) => {
-    if (!isAdmin) return; // Protección extra a nivel función
+    if (!isAdmin) return; // Doble validación por seguridad
     const remainingSales = sales.filter(s => s.date.split(',')[0] !== date);
     saveSales(remainingSales);
     setSales(remainingSales);
@@ -103,11 +101,11 @@ const Reports = ({ role }) => {
               <div className={`day-row ${expandedDate === date ? 'active' : ''}`} onClick={() => toggleExpand(date)}>
                 <span className="date-info">
                   <span className="arrow">
-                    {expandedDate === date ? (
-                      <img src={iconoAbierto} alt="Desplegado" className="icon-flecha" />
-                    ) : (
-                      <img src={iconoCerrado} alt="Contraído" className="icon-flecha" />
-                    )}
+                    <img 
+                      src={expandedDate === date ? iconoAbierto : iconoCerrado} 
+                      alt="Toggle" 
+                      className="icon-flecha" 
+                    />
                   </span>
                   <strong className='date'>{date}</strong> — {daySales.length} tickets — 
                   <span className="day-total-label"> 
@@ -119,7 +117,7 @@ const Reports = ({ role }) => {
                     <img src={download} alt='download'/> PDF
                   </button>
 
-                  {/* Lógica de administrador para eliminar */}
+                  {/* AQUÍ ESTÁ LA LÓGICA: Solo si es ADMIN muestra el botón de borrar o la confirmación */}
                   {isAdmin && (
                     confirmDeleteDate === date ? (
                       <div className="inline-confirm">
@@ -134,6 +132,7 @@ const Reports = ({ role }) => {
                   )}
                 </div>
               </div>
+
               {expandedDate === date && (
                 <div className="day-preview-details">
                   <table className="preview-table">

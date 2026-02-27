@@ -11,6 +11,9 @@ const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ user: '', pass: '', role: 'USER' });
   const [msg, setMsg] = useState({ text: '', isError: false });
+  
+  // ESTADO PARA CONTROLAR LA CONFIRMACIÓN DE ELIMINACIÓN
+  const [deletingIndex, setDeletingIndex] = useState(null);
 
   useEffect(() => {
     loadUsers();
@@ -48,12 +51,12 @@ const UserManagement = () => {
     const userToDelete = users[index];
     const admins = users.filter(u => u.role === 'ADMIN');
 
-    // LÓGICA PEDIDA: Solo permitir borrar si queda al menos otro ADMIN
     if (userToDelete.role === 'ADMIN' && admins.length <= 1) {
       setMsg({ 
-        text: "No se puede eliminar: debe quedar al menos un Administrador en el sistema.", 
+        text: "No se puede eliminar: debe quedar al menos un Administrador.", 
         isError: true 
       });
+      setDeletingIndex(null); // Resetear confirmación
       setTimeout(() => setMsg({ text: '', isError: false }), 4000);
       return;
     }
@@ -63,10 +66,12 @@ const UserManagement = () => {
     
     if (success) {
       setUsers(updatedUsers);
-      setMsg({ text: `Usuario "${userToDelete.user}" eliminado correctamente.`, isError: false });
+      setDeletingIndex(null); // Resetear confirmación
+      setMsg({ text: `Usuario "${userToDelete.user}" eliminado.`, isError: false });
       setTimeout(() => setMsg({ text: '', isError: false }), 3000);
     } else {
-      setMsg({ text: "Error al intentar eliminar el usuario.", isError: true });
+      setMsg({ text: "Error al eliminar.", isError: true });
+      setDeletingIndex(null);
       setTimeout(() => setMsg({ text: '', isError: false }), 4000);
     }
   };
@@ -96,7 +101,9 @@ const UserManagement = () => {
           <option value="USER">Empleado</option>
           <option value="ADMIN">Administrador</option>
         </select>
-        <button type="submit" className="register-btn"><img src={plus} alt='plus' className='plus'/> Agregar usuario</button>
+        <button type="submit" className="register-btn">
+          <img src={plus} alt='plus' className='plus'/> Agregar usuario
+        </button>
       </form>
 
       <div className='state-msg'>
@@ -118,28 +125,37 @@ const UserManagement = () => {
               <th>Usuario</th>
               <th>Rol / Permisos</th>
               <th>Contraseña</th>
-              <th></th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {users.map((u, i) => {
               const isOnlyAdmin = u.role === 'ADMIN' && users.filter(usr => usr.role === 'ADMIN').length <= 1;
+              
               return (
                 <tr key={i}>
                   <td><strong>{u.user}</strong></td>
                   <td>{u.role === 'ADMIN' ? 'Administrador' : 'Empleado'}</td>
                   <td>{u.pass}</td>
                   <td>
-                    <button 
-                      onClick={() => deleteUser(i)} 
-                      className='delete-register'
-                      style={{ 
-                        opacity: isOnlyAdmin ? 0.3 : 1,
-                        cursor: isOnlyAdmin ? 'not-allowed' : 'pointer'
-                      }}
-                    >
-                      <img src={borrar} alt='delete'/>
-                    </button>
+                    {deletingIndex === i ? (
+                      <div className="confirm-buttons">
+                        <button className="btn-confirm-del" onClick={() => deleteUser(i)}>Sí</button>
+                        <button className="btn-cancel-del" onClick={() => setDeletingIndex(null)}>No</button>
+                      </div>
+                    ) : (
+                      <button 
+                        onClick={() => !isOnlyAdmin && setDeletingIndex(i)} 
+                        className='delete-register'
+                        style={{ 
+                          opacity: isOnlyAdmin ? 0.3 : 1,
+                          cursor: isOnlyAdmin ? 'not-allowed' : 'pointer'
+                        }}
+                        title={isOnlyAdmin ? "No se puede eliminar el único administrador" : "Eliminar usuario"}
+                      >
+                        <img src={borrar} alt='delete'/>
+                      </button>
+                    )}
                   </td>
                 </tr>
               );
