@@ -13,10 +13,12 @@ import borrar from '../assets/icons/eliminar.png';
 // HOJA DE ESTILOS
 import './Reports.css';
 
-const Reports = () => {
+const Reports = ({ role }) => {
   const [sales, setSales] = useState([]);
   const [confirmDeleteDate, setConfirmDeleteDate] = useState(null);
   const [expandedDate, setExpandedDate] = useState(null);
+
+  const isAdmin = role === 'ADMIN';
 
   useEffect(() => {
     setSales(getSales());
@@ -57,7 +59,6 @@ const Reports = () => {
       `$${s.total.toFixed(0)}`
     ]);
 
-    // CORRECCIÓN: Llamada a autoTable como función independiente
     autoTable(doc, {
       head: [['Horario', 'Productos', 'Método de pago', 'Monto']],
       body: tableData,
@@ -72,6 +73,7 @@ const Reports = () => {
   };
 
   const deleteDaySales = (date) => {
+    if (!isAdmin) return; // Protección extra a nivel función
     const remainingSales = sales.filter(s => s.date.split(',')[0] !== date);
     saveSales(remainingSales);
     setSales(remainingSales);
@@ -113,20 +115,22 @@ const Reports = () => {
                   </span>
                 </span>
                 <div className="day-actions" onClick={(e) => e.stopPropagation()}>
-                  {confirmDeleteDate === date ? (
-                    <div className="inline-confirm">
-                      <button className="btn-confirm-yes" onClick={() => deleteDaySales(date)}>Sí</button>
-                      <button className="btn-confirm-no" onClick={() => setConfirmDeleteDate(null)}>No</button>
-                    </div>
-                  ) : (
-                    <>
-                      <button className="btn-pdf" onClick={() => exportDayPDF(date, daySales)}>
-                        <img src={download} alt='download'/> PDF
-                      </button>
+                  <button className="btn-pdf" onClick={() => exportDayPDF(date, daySales)}>
+                    <img src={download} alt='download'/> PDF
+                  </button>
+
+                  {/* Lógica de administrador para eliminar */}
+                  {isAdmin && (
+                    confirmDeleteDate === date ? (
+                      <div className="inline-confirm">
+                        <button className="btn-confirm-yes" onClick={() => deleteDaySales(date)}>Sí</button>
+                        <button className="btn-confirm-no" onClick={() => setConfirmDeleteDate(null)}>No</button>
+                      </div>
+                    ) : (
                       <button className="btn-delete" onClick={() => setConfirmDeleteDate(date)}>
                         <img src={borrar} alt='delete'/>
                       </button>
-                    </>
+                    )
                   )}
                 </div>
               </div>
