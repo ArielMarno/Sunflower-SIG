@@ -52,7 +52,7 @@ const ProductRegistration = () => {
     );
 
     if (isDuplicate) {
-      showTemporaryMessage("El producto que intenta registrar ya se encuentra en el inventario", true);
+      showTemporaryMessage("El producto que intenta registrar ya se encuentra en el inventario.", true);
       return;
     }
 

@@ -12,7 +12,7 @@ const UserManagement = () => {
   const [newUser, setNewUser] = useState({ user: '', pass: '', role: 'USER' });
   const [msg, setMsg] = useState({ text: '', isError: false });
   
-  // ESTADO PARA CONTROLAR LA CONFIRMACIÓN DE ELIMINACIÓN
+  //CONTROLAR LA CONFIRMACIÓN DE ELIMINACIÓN
   const [deletingIndex, setDeletingIndex] = useState(null);
 
   useEffect(() => {

@@ -4,6 +4,10 @@ import InventoryTracking from './components/InventoryTracking';
 import SaleCalculator from './components/SaleCalculator';
 import Reports from './components/Reports';
 import UserManagement from './components/UserManagement';
+
+//IMPORTAR PANTALLA DE ACTIVACION
+import ActivationScreen from './components/ActivationScreen';
+
 //ICONOS
 import logo from './assets/logo.png';
 import cart from './assets/icons/venta.png';
@@ -12,6 +16,7 @@ import registration from './assets/icons/registro.png';
 import report from './assets/icons/reportes.png';
 import user from './assets/icons/user.png';
 import exit from './assets/icons/exit.png';
+
 //HOJA DE ESTILOS
 import './App.css';
 
@@ -28,7 +33,6 @@ const Login = ({ onLoginSuccess }) => {
     if (isChecking) return;
     setIsChecking(true);
 
-    //VALIDACIÓN DE CREDENCIALES
     const response = await ipcRenderer.invoke('login-attempt', { username, password });
 
     if (response.success) {
@@ -49,11 +53,13 @@ const Login = ({ onLoginSuccess }) => {
         <h4>Ingrese sus credenciales:</h4>
         <input type="text" placeholder="Usuario" value={username} onChange={(e) => setUsername(e.target.value)} required autoFocus />
         <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit" className="login-btn" disabled={isChecking}>
-          {isChecking ? 'Iniciando...' : 'INGRESAR'}
-        </button>
-        <div className='password-container'>
-          {error && <p className="login-error">Credenciales incorrectas.</p>}
+        <div className="login-btn-container">
+          <button type="submit" className="login-btn" disabled={isChecking}>
+            {isChecking ? 'Iniciando...' : 'INGRESAR'}
+          </button>
+          <div className='password-container'>
+            {error && <p className="login-error">Credenciales incorrectas.</p>}
+          </div>
         </div>
         <p className="copy"><span>Sunflower Agencia</span> © {new Date().getFullYear()}. Todos los derechos reservados.</p>
       </form>
@@ -64,25 +70,46 @@ const Login = ({ onLoginSuccess }) => {
 function App() {
   const [activeTab, setActiveTab] = useState('sales');
   const [loading, setLoading] = useState(true);
+  const [isActivated, setIsActivated] = useState(false); // NUEVO ESTADO PARA EL TOKEN
   const [auth, setAuth] = useState({ isAuthenticated: false, role: null });
 
   useEffect(() => {
+    //VERIFICAR ACTIVACIÓN VIGENTE
+    const activated = localStorage.getItem('sunflower_activated');
+    if (activated === 'true') {
+      setIsActivated(true);
+    }
     setTimeout(() => setLoading(false), 1500);
   }, []);
 
-  //SPINNER
-  if (loading) return <div className="loader-container"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
+  // SPINNER DE CARGA INICIAL
+  if (loading) return (
+    <div className="loader-container">
+      <div className="lds-ring">
+        <div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+  );
 
+  //VERIFICACIÓN DE TOKEN DE PRODUCTO 
+  if (!isActivated) {
+    return <ActivationScreen onActivate={() => setIsActivated(true)} logo={logo} />;
+  }
+
+  //LOGIN DE USUARIO
   if (!auth.isAuthenticated) {
     return <Login onLoginSuccess={(role) => setAuth({ isAuthenticated: true, role })} />;
   }
 
   const isAdmin = auth.role === 'ADMIN';
 
+  //INTERFAZ PRINCIPAL
   return (
     <div className="app-container">
       <nav className="sidebar">
-        <div className='logo-container'><img src={logo} alt="Logo" className="logo" /></div>
+        <div className='logo-container'>
+          <img src={logo} alt="Logo" className="logo" />
+        </div>
         <div className="nav-buttons">
           <button className={activeTab === 'sales' ? 'active' : ''} onClick={() => setActiveTab('sales')}>
             <img src={cart} alt="icon" className="btn-icon" /> Nueva venta
@@ -103,13 +130,14 @@ function App() {
               </button>
             </>
           )}
-
         </div>
         <button className="logout-sidebar-btn" onClick={() => setAuth({ isAuthenticated: false, role: null })}>
           <img src={exit} alt="exit" className="btn-icon" /> Cerrar sesión
         </button>
-        <p className="copy-navbar"><span>Sunflower Agencia</span> © {new Date().getFullYear()}.<br/>
-        Todos los derechos reservados.</p>
+        <p className="copy-navbar">
+          <span>Sunflower Agencia</span> © {new Date().getFullYear()}.<br/>
+          Todos los derechos reservados.
+        </p>
       </nav>
 
       <main className="content">

@@ -204,7 +204,7 @@ input::placeholder{
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  background-color: #1a1a2e;
+  background-color: #1a252f;
 }
 
 .login-card {
@@ -213,12 +213,18 @@ input::placeholder{
   align-items: center;
   justify-content: center;
   background: var(--white);
-  padding: 0 2rem;
-  border-radius: 5px;
+  padding: 0 1.5rem;
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   text-align: center;
-  width: 450px;
+  width: 420px;
   height: 600px;
+}
+
+.login-card .logo{
+  width: 130px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .login-card h2 { 
@@ -241,7 +247,7 @@ input::placeholder{
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .login-error{
@@ -256,7 +262,7 @@ input::placeholder{
   padding: 1rem;
   margin-top: 0.5rem;
   border: 1px solid var(--grey);
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1.2rem;
   text-align: center;
   transition: border-color 0.3s;
@@ -269,6 +275,10 @@ input::placeholder{
 
 .login-card input::placeholder{
   font-size: 1.2rem;
+} 
+.login-btn-container{
+  width: 100%;
+  min-height: 100px;
 }
 
 .login-btn {
@@ -280,7 +290,7 @@ input::placeholder{
   background-color: var(--green);
   color: var(--white);
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
@@ -297,13 +307,14 @@ input::placeholder{
 
 .copy{
   font-family: var(--text);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: #818181;
   font-weight: 500;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .copy span{
+  font-size: 0.8rem;
   color: #757474;
   font-family: var(--title);
   font-weight: 600;
@@ -334,15 +345,16 @@ input::placeholder{
 
 .copy-navbar{
   font-family: var(--text);
-  font-size: 0.7rem;
-  color: var(--grey);
-  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #d4d8db;
+  font-weight: 500;
+  margin-top: 1rem;
 }
 
 .copy-navbar span{
+  font-size: 0.8rem;
   font-family: var(--title);
   font-weight: 600;
-  font-size: 0.7rem;
   letter-spacing: 0.5px;
 }
 
@@ -371,5 +383,13 @@ input::placeholder{
   .btn-icon{
     width: 25px;
     height: auto;
+  }
+
+  .copy-navbar{
+    font-size: 0.8rem;
+  }
+
+  .copy-navbar span{
+    font-size: 0.7rem;
   }
 }

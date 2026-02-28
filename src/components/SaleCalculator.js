@@ -62,7 +62,7 @@ const SaleCalculator = () => {
       });
       setManualCode('');
     } else {
-      setErrorScan("Producto no encontrado");
+      setErrorScan("Producto no encontrado.");
       setTimeout(() => setErrorScan(''), 3000);
     }
   }, [cart]);
@@ -277,7 +277,8 @@ const SaleCalculator = () => {
           <button className="finish-sale-btn" onClick={finishSale} disabled={cart.length === 0}>
             <img src={pay} alt="pay"/> FINALIZAR COBRO
           </button>
-          {/*MENSAJE DE VENTA EXITOSA*/}
+          
+          {/*VENTA EXITOSA*/}
           {successSale && <p className='sell-success' style={{ 
             color: '#28a745', 
             fontWeight: '600',

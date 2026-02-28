@@ -1,0 +1,144 @@
+.act-overlay {
+  height: 100vh;
+  width: 100vw;
+  background-color: #1a252f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--title);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+/*TARJETA*/
+.act-card {
+  background: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  height: 600px;
+  text-align: center;
+}
+
+.act-logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/*TITULO*/
+.act-header h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/*NOMBRE DEL SISTEMA*/
+.act-header p {
+  color: #555763;
+  font-size: 1rem;
+  font-size: 500;
+  margin-bottom: 1rem;
+}
+
+/*CONTENDOR DE ID DEL DISPOSITIVO*/
+.act-id-box {
+  background: #fdfdfd;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px dashed #ced4da;
+  margin-bottom: 1.5rem;
+}
+
+.act-id-box label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #8092a5;
+  display: block;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+/*ID*/
+.act-machine-id {
+  font-family: var(--text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  letter-spacing: 2px;
+}
+
+.act-form {
+  text-align: left;
+}
+
+.act-form label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #34495e;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/*INGRESAR TOKEN DE ACTIVACIÓN*/
+.act-form input {
+  font-family: var(--text);
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ecf0f1;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  text-align: center;
+}
+
+.act-form input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.act-input-error {
+  border-color: #e74c3c !important;
+}
+
+.act-btn-container{
+    min-height: 100px;
+}
+
+/*BTN DE ACTIVACIÓN*/
+.act-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2c3e50;
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.act-btn:hover {
+  background-color: #1a252f;
+}
+
+.act-error-msg {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/*COPY*/
+.act-footer {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  color: #555763;
+}

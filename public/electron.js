@@ -51,6 +51,11 @@ function createWindow() {
 }
 
 // COMUNICACION IPC
+const { machineIdSync } = require('node-machine-id');
+ipcMain.handle('get-machine-id', async () => {
+  return machineIdSync({ original: true });
+});
+
 ipcMain.handle('login-attempt', async (event, { username, password }) => {
   const users = getStoredUsers();
   

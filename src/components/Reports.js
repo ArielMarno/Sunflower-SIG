@@ -18,7 +18,7 @@ const Reports = ({ role }) => {
   const [confirmDeleteDate, setConfirmDeleteDate] = useState(null);
   const [expandedDate, setExpandedDate] = useState(null);
 
-  // Verificamos si es administrador
+  //VERIFICA ADMIN
   const isAdmin = role === 'ADMIN';
 
   useEffect(() => {
@@ -41,14 +41,14 @@ const Reports = ({ role }) => {
     }));
     const ws = XLSX.utils.json_to_sheet(dataToExport);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Ventas_Totales');
+    XLSX.utils.book_append_sheet(wb, ws, 'ventas_totales');
     XLSX.writeFile(wb, 'reporte_ventas_general.xlsx');
   };
 
   const exportDayPDF = (date, daySales) => {
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text(`Reporte de Ventas - Fecha: ${date}`, 14, 15);
+    doc.text(`reporte de ventas - fecha: ${date}`, 14, 15);
     const totalDelDia = daySales.reduce((acc, s) => acc + s.total, 0);
     const tableData = daySales.map(s => [
       s.date.split(',')[1],
@@ -71,7 +71,7 @@ const Reports = ({ role }) => {
   };
 
   const deleteDaySales = (date) => {
-    if (!isAdmin) return; // Doble validación por seguridad
+    if (!isAdmin) return; //DOBLE VALIDACIÓN
     const remainingSales = sales.filter(s => s.date.split(',')[0] !== date);
     saveSales(remainingSales);
     setSales(remainingSales);
@@ -117,7 +117,7 @@ const Reports = ({ role }) => {
                     <img src={download} alt='download'/> PDF
                   </button>
 
-                  {/* AQUÍ ESTÁ LA LÓGICA: Solo si es ADMIN muestra el botón de borrar o la confirmación */}
+                  {/*SOLO ADMIN*/}
                   {isAdmin && (
                     confirmDeleteDate === date ? (
                       <div className="inline-confirm">

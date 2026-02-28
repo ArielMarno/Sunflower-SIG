@@ -90,7 +90,7 @@ const InventoryTracking = ({ role }) => {
       columnStyles: { 0: { cellWidth: 90 }, 1: { cellWidth: 50 }, 2: { halign: 'center' } }
     });
     doc.save(`pedido_${today.replace(/\//g, '-')}.pdf`);
-    showStatus("Archivo de pedido generado");
+    showStatus("Archivo de pedido generado.");
   };
 
   const exportBackup = () => {
@@ -102,7 +102,7 @@ const InventoryTracking = ({ role }) => {
       link.href = url;
       link.download = `respaldo_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
       link.click();
-      showStatus("Respaldo guardado");
+      showStatus("Respaldo guardado.");
     } catch (e) { showStatus("Error al exportar", true); }
   };
 
@@ -117,9 +117,9 @@ const InventoryTracking = ({ role }) => {
           saveProducts(data.products);
           saveSales(data.sales);
           loadProducts();
-          showStatus("Respaldo cargado");
+          showStatus("Respaldo cargado.");
         }
-      } catch (err) { showStatus("Archivo inválido", true); }
+      } catch (err) { showStatus("Archivo inválido.", true); }
     };
     reader.readAsText(file);
   };
