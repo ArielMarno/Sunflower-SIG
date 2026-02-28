@@ -1,7 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
-
+const Store = require('electron-store');
+const store = new (Store.default || Store)();
 const USERS_PATH = path.join(app.getPath('userData'), 'users.json');
 
 function getStoredUsers() {
@@ -51,6 +52,18 @@ function createWindow() {
 }
 
 // COMUNICACION IPC
+
+//GUARDAR ACTIVACIÓN
+ipcMain.handle('save-activation', (event, value) => {
+  store.set('isActivated', value);
+  return true;
+});
+
+//LEER ACTIVACIÓN
+ipcMain.handle('get-activation-status', () => {
+  return store.get('isActivated', false); // false por defecto
+});
+
 const { machineIdSync } = require('node-machine-id');
 ipcMain.handle('get-machine-id', async () => {
   return machineIdSync({ original: true });

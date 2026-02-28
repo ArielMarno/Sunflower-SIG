@@ -25,15 +25,15 @@ const ActivationScreen = ({ onActivate, logo }) => {
     getID();
   }, []);
 
-  const handleActivate = (e) => {
+  const handleActivate = async (e) => {
     e.preventDefault();
-    // TOKEN PARA FORMATO Base64
+    
     const rawToken = `Gloriaeterna.8${machineID}`;
-    const EXPECTED_B64_TOKEN = btoa(rawToken); 
+    const EXPECTED_B64_TOKEN = btoa(rawToken);
 
-    // COMPROBACIÓN DE INGRESO
     if (inputToken.trim() === EXPECTED_B64_TOKEN) {
-      localStorage.setItem('sunflower_activated', 'true');
+      //GUARDADO EN ELECTRON (DISCO DURO)
+      await ipcRenderer.invoke('save-activation', true);
       onActivate();
     } else {
       setError(true);

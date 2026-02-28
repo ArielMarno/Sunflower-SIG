@@ -132,6 +132,7 @@
 .act-error-msg {
   color: #e74c3c;
   font-size: 0.9rem;
+  font-weight: 600;
   margin: 1rem 0;
   text-align: center;
 }

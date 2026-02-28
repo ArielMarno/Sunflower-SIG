@@ -74,12 +74,16 @@ function App() {
   const [auth, setAuth] = useState({ isAuthenticated: false, role: null });
 
   useEffect(() => {
-    //VERIFICAR ACTIVACIÓN VIGENTE
-    const activated = localStorage.getItem('sunflower_activated');
-    if (activated === 'true') {
-      setIsActivated(true);
-    }
-    setTimeout(() => setLoading(false), 1500);
+  const checkActivation = async () => {
+    // Le pedimos el estado al Store de Electron
+      const status = await ipcRenderer.invoke('get-activation-status');
+      if (status === true) {
+        setIsActivated(true);
+      }
+      setLoading(false);
+    };
+    
+    checkActivation();
   }, []);
 
   // SPINNER DE CARGA INICIAL
